@@ -1,0 +1,28 @@
+{
+  "name": "gifchat",
+  "version": "1.0.0",
+  "description": "A gifChat room where users can post memes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkshayIyer12/gifChat.git"
+  },
+  "keywords": [
+    "memes",
+    "nodejs",
+    "socketio"
+  ],
+  "author": "Akshay Iyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AkshayIyer12/gifChat/issues"
+  },
+  "homepage": "https://github.com/AkshayIyer12/gifChat#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
