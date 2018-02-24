@@ -3,10 +3,15 @@
   let form = document.getElementsByTagName('form')[0]
   let input = document.getElementById('m')
   let ul = document.getElementById('messages')
+  let files = ''
   form.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log(socket.id)
-    socket.emit('message', input.value)
+    let obj = {
+      msg: input.value,
+      file: files
+    }
+    socket.emit('message', obj)
     ul.innerHTML += `<li>${input.value}</li>`
     input.value = ''
     return false
@@ -18,7 +23,7 @@
     }
   })
   document.getElementById('read_img').addEventListener('change', function readURL (input) {
-    let files = input.explicitOriginalTarget.files
+    files = input.explicitOriginalTarget.files
     if (files && files[0]) {
       let reader = new FileReader()
       reader.onload = function (e) {
