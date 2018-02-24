@@ -1,16 +1,19 @@
 (() => {
   let socket = io()
-  let form = document.getElementsByTagName('form')[0]
+  let button = document.getElementsByTagName('button')[0]
   let input = document.getElementById('m')
   let ul = document.getElementById('messages')
-  form.addEventListener('submit', () => {
-    console.log('hi')
+  button.addEventListener('click', () => {
+    console.log(socket.id)
     socket.emit('message', input.value)
+    ul.innerHTML += `<li>${input.value}</li>`
     input.value = ''
     return false
   })
-  socket.on('message', msg => {
-    let li = `<li>${msg}</li>`
-    ul.innerHTML += li
+  socket.on('message', ({data, id}) => {
+    if (socket.id !== id) {
+      let li = `<li>${data}</li>`
+      ul.innerHTML += li
+    }
   })
 })()
