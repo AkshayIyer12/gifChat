@@ -1,9 +1,10 @@
 (() => {
   let socket = io()
-  let button = document.getElementsByTagName('button')[0]
+  let form = document.getElementsByTagName('form')[0]
   let input = document.getElementById('m')
   let ul = document.getElementById('messages')
-  button.addEventListener('click', () => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
     console.log(socket.id)
     socket.emit('message', input.value)
     ul.innerHTML += `<li>${input.value}</li>`
