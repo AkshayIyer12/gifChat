@@ -10,12 +10,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 io.on('connection', socket => {
+  console.log(Object.keys(socket))
+  console.log('--------------------------')
   console.log('A new user got connected')
   socket.on('message', msg => {
-    console.log('message: ' + msg)
-    io.emit('message', msg)
+    console.log(msg)
+    io.emit('message', {
+      data: msg,
+      id: socket.id
+    })
   })
-  socket.on('disconnect', () => console.log('user connected'))
+  socket.on('disconnect', () => console.log('user disconnected'))
 })
 
 http.listen(3000, () => console.log('Listening on 3000'))
